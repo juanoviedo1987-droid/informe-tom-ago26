@@ -1,92 +1,489 @@
 <!DOCTYPE html>
-<html lang="es" class="h-full bg-slate-900 text-slate-100">
+<html lang="es" class="h-full bg-slate-50">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resumen Interno — Negociación TOM</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Inter', sans-serif; }
-    h1, h2, h3, .font-heading { font-family: 'Plus Jakarta Sans', sans-serif; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrategia de Negociación TOM — Resumen Ejecutivo</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            500: '#475569',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        },
+                        amberCustom: {
+                            50: '#fffbeb',
+                            500: '#d97706',
+                            600: '#b45309',
+                        },
+                        emeraldCustom: {
+                            50: '#ecfdf5',
+                            600: '#059669',
+                        },
+                        roseCustom: {
+                            50: '#fff1f2',
+                            600: '#e11d48',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 380px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 360px;
+            }
+        }
+        .tab-active {
+            border-bottom-color: #d97706;
+            color: #b45309;
+            font-weight: 600;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
 </head>
-<body class="min-h-screen py-6 px-4 max-w-4xl mx-auto space-y-5 text-sm">
+<body class="h-full text-slate-800 antialiased flex flex-col justify-between">
 
-  <!-- HEADER -->
-  <header class="border-b border-slate-800 pb-3 flex justify-between items-center">
     <div>
-      <span class="text-[11px] text-amber-400 font-bold uppercase tracking-wider block">Nazaria TOM • Uso Interno</span>
-      <h1 class="text-lg font-extrabold text-white font-heading">Resumen Ejecutivo de Negociación</h1>
-    </div>
-    <span class="text-xs bg-slate-800 text-slate-300 font-mono px-3 py-1 rounded-lg border border-slate-700">12/08/2026</span>
-  </header>
+        <!-- TOP HEADER -->
+        <header class="bg-slate-900 text-white border-b border-slate-800 shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider bg-amber-500 text-slate-950">Uso Interno — Socios</span>
+                            <span class="text-slate-400 text-xs">Corte al 12/08/2026</span>
+                        </div>
+                        <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white mt-1">
+                            Negociación Comercial — TOM (Tortugas Open Mall)
+                        </h1>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button onclick="window.print()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs rounded-lg border border-slate-700 transition-colors">
+                            &#128438; Imprimir / PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-  <!-- 1. NUMEROS CONSOLIDADOS -->
-  <section class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 space-y-4 shadow-sm">
-    <div class="flex justify-between items-center border-b border-slate-700/60 pb-2">
-      <h2 class="text-xs font-bold text-amber-400 uppercase tracking-wider font-heading">1. Depuración de Masa Exigible</h2>
-      <span class="text-xs text-slate-400">Ocupación Real: <strong class="text-rose-400 font-bold">25,3%</strong> (Norma: 12%-15%)</span>
+        <!-- MAIN CONTAINER -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+            <!-- INTRODUCTORY SECTION -->
+            <section class="bg-white rounded-xl p-4 shadow-sm border border-slate-200">
+                <h2 class="text-sm font-bold text-slate-900 mb-1 uppercase tracking-wider">Objetivo de la Propuesta</h2>
+                <p class="text-slate-600 text-xs leading-relaxed">
+                    Abonar pagos puente para cuidar caja en temporada alta, quita total de punitorios ($2,03M) y reestructurar el contrato con un <strong>Cap de ocupación del 20%</strong>.
+                </p>
+            </section>
+
+            <!-- KEY METRICS DASHBOARD -->
+            <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Deuda Reclamada</span>
+                        <span class="px-2 py-0.5 text-[10px] font-bold bg-rose-50 text-rose-600 rounded">al 12/08</span>
+                    </div>
+                    <div class="text-2xl font-extrabold text-slate-900 mt-1">$35,06 M</div>
+                    <p class="text-[11px] text-slate-500 mt-1">$25,38M Jul + $9,67M Ago (1ªQ)</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-xl p-4 border border-amber-200 bg-amber-50/30 shadow-sm">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-semibold text-amber-800 uppercase tracking-wider font-bold">Punitorios Detectados</span>
+                        <span class="px-2 py-0.5 text-[10px] font-bold bg-amber-100 text-amber-800 rounded">Quita 100%</span>
+                    </div>
+                    <div class="text-2xl font-extrabold text-amber-600 mt-1">-$2,03 M</div>
+                    <p class="text-[11px] text-amber-700 mt-1">Intereses en Mayo, Jul y Ago</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-xl p-4 border border-emerald-200 bg-emerald-50/30 shadow-sm">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-semibold text-emerald-800 uppercase tracking-wider font-bold">Masa Neta Exigible</span>
+                        <span class="px-2 py-0.5 text-[10px] font-bold bg-emerald-100 text-emerald-800 rounded">Base Real</span>
+                    </div>
+                    <div class="text-2xl font-extrabold text-emerald-700 mt-1">$33,02 M</div>
+                    <p class="text-[11px] text-emerald-700 mt-1">Masa real post condonación</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Ocupación Actual</span>
+                        <span class="px-2 py-0.5 text-[10px] font-bold bg-rose-100 text-rose-700 rounded">Crítico</span>
+                    </div>
+                    <div class="text-2xl font-extrabold text-rose-600 mt-1">25,3%</div>
+                    <p class="text-[11px] text-slate-500 mt-1">Norma: 12%-15% | Cap: 20%</p>
+                </div>
+            </section>
+
+            <!-- NAVIGATION TABS -->
+            <div class="border-b border-slate-200 bg-white rounded-t-xl px-4 pt-2 shadow-sm">
+                <nav class="flex space-x-6 overflow-x-auto" aria-label="Tabs">
+                    <button onclick="switchTab('diag')" id="tab-diag" class="tab-button tab-active py-2.5 px-1 border-b-2 font-medium text-xs sm:text-sm whitespace-nowrap flex items-center gap-2">
+                        <span>&#128200;</span> 1. Diagnóstico de Ocupación
+                    </button>
+                    <button onclick="switchTab('limpieza')" id="tab-limpieza" class="tab-button border-b-2 border-transparent text-slate-500 hover:text-slate-700 py-2.5 px-1 font-medium text-xs sm:text-sm whitespace-nowrap flex items-center gap-2">
+                        <span>&#129529;</span> 2. Condonación de Punitorios
+                    </button>
+                    <button onclick="switchTab('propuesta')" id="tab-propuesta" class="tab-button border-b-2 border-transparent text-slate-500 hover:text-slate-700 py-2.5 px-1 font-medium text-xs sm:text-sm whitespace-nowrap flex items-center gap-2">
+                        <span>&#129309;</span> 3. Propuesta & Cronograma
+                    </button>
+                </nav>
+            </div>
+
+            <!-- TAB 1: DIAGNÓSTICO DE SITUACIÓN Y COSTO DE OCUPACIÓN -->
+            <div id="content-diag" class="tab-content space-y-6">
+                <div class="bg-white p-5 rounded-b-xl rounded-tr-xl border border-slate-200 shadow-sm">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                        <!-- Chart Container -->
+                        <div class="lg:col-span-7 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider">Costo de Ocupación (% s/ Ventas)</h4>
+                                <span class="text-[11px] text-slate-500">Benchmark vs TOM</span>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="chartOccupancy"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Qualitative Explanations -->
+                        <div class="lg:col-span-5 space-y-3">
+                            <div class="bg-amber-50/60 rounded-xl p-3.5 border border-amber-200">
+                                <div class="flex items-center gap-2 mb-1.5">
+                                    <span class="text-amber-700 font-bold text-xs">&#9888; Trampa del VMA de Mayo</span>
+                                </div>
+                                <ul class="text-xs text-slate-700 space-y-1 pl-4 list-disc">
+                                    <li>El Alquiler Variable (VPM) <strong>absorbió el 71,6%</strong> de la rebaja del VMA.</li>
+                                    <li>Ahorro real neto: <strong>$578.000/mes</strong>.</li>
+                                    <li>En Agosto ($9,67M), el costo superó los niveles previos a la rebaja.</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-200">
+                                <h5 class="text-xs font-bold text-slate-800 uppercase tracking-wide">Desglose Reclamado ($35,06M)</h5>
+                                <div class="mt-2 space-y-1.5 text-xs">
+                                    <div class="flex justify-between py-1 border-b border-slate-200">
+                                        <span class="text-slate-600">Saldo a Julio 2026:</span>
+                                        <span class="font-mono font-bold">$25.386.751,46</span>
+                                    </div>
+                                    <div class="flex justify-between py-1 border-b border-slate-200">
+                                        <span class="text-slate-600">Cargos 1ªQ Agosto:</span>
+                                        <span class="font-mono font-bold">$9.670.000,00</span>
+                                    </div>
+                                    <div class="flex justify-between py-1 font-bold text-slate-900 pt-0.5">
+                                        <span>Total Reclamado:</span>
+                                        <span class="font-mono text-rose-600">$35.056.751,46</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: LIMPIEZA DE NÚMEROS (PUNITORIOS) -->
+            <div id="content-limpieza" class="tab-content space-y-6 hidden">
+                <div class="bg-white p-5 rounded-b-xl rounded-tr-xl border border-slate-200 shadow-sm">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                        <!-- Chart Container -->
+                        <div class="lg:col-span-7 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider">Depuración de Deuda ($M)</h4>
+                                <span class="text-[11px] text-slate-500">Bruta vs Neta</span>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="chartWaterfall"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Explanatory Table & Details -->
+                        <div class="lg:col-span-5 space-y-3">
+                            <div class="bg-white rounded-xl p-3.5 border border-rose-200 bg-rose-50/20">
+                                <h4 class="text-xs font-bold text-rose-900 mb-2 uppercase">Intereses Punitorios A Condonar</h4>
+                                <div class="space-y-1.5 text-xs font-mono">
+                                    <div class="p-1.5 bg-white rounded border border-slate-200 flex justify-between">
+                                        <span class="font-sans text-slate-600">Mora Mayo:</span>
+                                        <span class="font-semibold">$612.430,20</span>
+                                    </div>
+                                    <div class="p-1.5 bg-white rounded border border-slate-200 flex justify-between">
+                                        <span class="font-sans text-slate-600">Mora Julio:</span>
+                                        <span class="font-semibold">$845.120,00</span>
+                                    </div>
+                                    <div class="p-1.5 bg-white rounded border border-slate-200 flex justify-between">
+                                        <span class="font-sans text-slate-600">Mora Agosto (1ªQ):</span>
+                                        <span class="font-semibold">$577.027,93</span>
+                                    </div>
+                                    <div class="p-1.5 bg-amber-100/60 rounded border border-amber-300 flex justify-between font-bold text-amber-900">
+                                        <span class="font-sans">Quita Solicitada:</span>
+                                        <span>$2.034.578,13</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-200">
+                                <h5 class="text-xs font-bold text-emerald-900 uppercase">Masa Neta Exigible</h5>
+                                <div class="text-2xl font-extrabold text-emerald-700 font-mono mt-0.5">$33.022.173,33</div>
+                                <p class="text-[11px] text-emerald-800 mt-0.5 leading-tight">
+                                    Base real de negociación para estructurar los desembolsos.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: PROPUESTA UNIFICADA & CRONOGRAMA -->
+            <div id="content-propuesta" class="tab-content space-y-6 hidden">
+                <div class="bg-white p-5 rounded-b-xl rounded-tr-xl border border-slate-200 shadow-sm space-y-6">
+
+                    <!-- 3A. Prerrequisitos Comerciales -->
+                    <div>
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-50 inline-block px-2.5 py-1 rounded-md mb-3 border border-amber-200">
+                            A. Prerrequisitos Comerciales (Innegociables)
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                            <div class="p-3 rounded-xl border border-slate-200 bg-slate-50">
+                                <div class="text-amber-600 font-bold text-base">1. Cap del 20%</div>
+                                <div class="text-[11px] font-bold text-slate-800 uppercase mb-1">Tope Ocupación</div>
+                                <p class="text-xs text-slate-600">Max 20% total sobre ventas netas (VMA + VPM + Exp + FP).</p>
+                            </div>
+
+                            <div class="p-3 rounded-xl border border-slate-200 bg-slate-50">
+                                <div class="text-amber-600 font-bold text-base">2. Gatillo $40M</div>
+                                <div class="text-[11px] font-bold text-slate-800 uppercase mb-1">Activación VPM</div>
+                                <p class="text-xs text-slate-600">El variable liquida únicamente si las ventas superan $40M/mes.</p>
+                            </div>
+
+                            <div class="p-3 rounded-xl border border-slate-200 bg-slate-50">
+                                <div class="text-amber-600 font-bold text-base">3. Congelamiento VMA</div>
+                                <div class="text-[11px] font-bold text-slate-800 uppercase mb-1">Fijo a Enero 2027</div>
+                                <p class="text-xs text-slate-600">Cuota base $2,04M sin indexación IPC hasta Ene 2027.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3B. Esquema de Pago -->
+                    <div>
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800 bg-slate-100 inline-block px-2.5 py-1 rounded-md mb-3 border border-slate-200">
+                            B. Esquema de Refinanciación y Cancelación
+                        </h4>
+                        
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                            <div class="lg:col-span-7 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h5 class="text-xs font-bold text-slate-800 uppercase tracking-wider">Cronograma de Desembolsos ($M)</h5>
+                                    <span class="text-[11px] text-slate-500">Ago 2026 - Feb 2027</span>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="chartSchedule"></canvas>
+                                </div>
+                            </div>
+
+                            <div class="lg:col-span-5 space-y-3">
+                                <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                                    <div class="flex items-center justify-between border-b border-slate-200 pb-1.5">
+                                        <span class="text-xs font-bold text-slate-700">Pagos Puente:</span>
+                                        <span class="text-sm font-extrabold text-slate-900 font-mono">$2,50 M / mes</span>
+                                    </div>
+                                    <p class="text-xs text-slate-600">
+                                        Efectivo en <strong>Ago, Sep y Oct</strong> ($7,50M total). Protege la caja para stock de temporada.
+                                    </p>
+                                </div>
+
+                                <div class="p-3.5 bg-emerald-50/70 rounded-xl border border-emerald-200 space-y-2">
+                                    <div class="flex items-center justify-between border-b border-emerald-200 pb-1.5">
+                                        <span class="text-xs font-bold text-emerald-900">Saldo eCheqs:</span>
+                                        <span class="text-sm font-extrabold text-emerald-700 font-mono">$25.522.173,33</span>
+                                    </div>
+                                    <p class="text-xs text-slate-700">
+                                        Post 25/10: <strong>4 eCheqs diferidos de ~$6,38M c/u</strong>:
+                                    </p>
+                                    <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+                                        <div class="p-1.5 bg-white rounded border border-emerald-200 text-center">
+                                            <span class="text-slate-500 block text-[10px]">30 Días (Nov)</span>
+                                            <span class="font-bold text-slate-800">$6.380.543</span>
+                                        </div>
+                                        <div class="p-1.5 bg-white rounded border border-emerald-200 text-center">
+                                            <span class="text-slate-500 block text-[10px]">60 Días (Dic)</span>
+                                            <span class="font-bold text-slate-800">$6.380.543</span>
+                                        </div>
+                                        <div class="p-1.5 bg-white rounded border border-emerald-200 text-center">
+                                            <span class="text-slate-500 block text-[10px]">90 Días (Ene)</span>
+                                            <span class="font-bold text-slate-800">$6.380.543</span>
+                                        </div>
+                                        <div class="p-1.5 bg-white rounded border border-emerald-200 text-center">
+                                            <span class="text-slate-500 block text-[10px]">120 Días (Feb)</span>
+                                            <span class="font-bold text-slate-800">$6.380.544</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs font-mono">
-      <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
-        <span class="text-slate-400 font-sans text-[11px] block">Reclamo Bruto:</span>
-        <strong class="text-white text-base font-bold">$35,06M</strong>
-        <span class="text-[10px] text-slate-500 font-sans block mt-0.5">$25,38M Jul + $9,67M Ago</span>
-      </div>
-      <div class="bg-rose-500/10 p-3 rounded-xl border border-rose-500/30">
-        <span class="text-rose-300 font-sans text-[11px] font-semibold block">(-) Punitorios:</span>
-        <strong class="text-rose-400 text-base font-bold">-$2,03M</strong>
-        <span class="text-[10px] text-rose-300/80 font-sans block mt-0.5">Mora Mayo, Jul y Ago</span>
-      </div>
-      <div class="bg-emerald-500/10 p-3 rounded-xl border border-emerald-500/30 col-span-2">
-        <span class="text-emerald-300 font-sans text-[11px] font-semibold block">(=) Masa Neta Base Exigible:</span>
-        <strong class="text-emerald-400 text-lg font-bold">$33,02M</strong>
-        <span class="text-[10px] text-emerald-300/80 font-sans block mt-0.5">Base real de negociación</span>
-      </div>
-    </div>
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-4 border-t border-slate-800 mt-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div>
+                <p class="font-bold text-slate-300">Resumen Ejecutivo — Negociación Estratégica TOM</p>
+            </div>
+            <div class="text-slate-500 text-right text-[11px]">
+                <p>Base Neta Exigible: $33.022.173,33 | 3 Puente ($7,50M) + 4 eCheqs ($25,52M)</p>
+            </div>
+        </div>
+    </footer>
 
-    <div class="p-3 bg-amber-500/10 rounded-xl border border-amber-500/20 text-amber-200/90 text-xs">
-      <strong>Efecto Trampa VPM:</strong> El 50% de descuento en VMA se reabsorbió en un <strong>71,6% por el alquiler variable</strong>. Ahorro neto real: $578K/mes.
-    </div>
-  </section>
+    <!-- JAVASCRIPT LOGIC & CHARTS -->
+    <script>
+        let chartOccupancyInstance = null;
+        let chartWaterfallInstance = null;
+        let chartScheduleInstance = null;
 
-  <!-- 2. CONDICIONES COMERCIALES (PRERREQUISITOS) -->
-  <section class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 space-y-3">
-    <h2 class="text-xs font-bold text-blue-400 uppercase tracking-wider font-heading">2. Prerrequisitos Comerciales (Innegociables)</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-      <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
-        <strong class="text-white block font-semibold mb-1">1. Cap Ocupación 20%</strong>
-        <span class="text-slate-400">Tope máximo global (VMA+VPM+Exp+FP) sobre ventas netas.</span>
-      </div>
-      <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
-        <strong class="text-white block font-semibold mb-1">2. Gatillo VPM $40M</strong>
-        <span class="text-slate-400">Cobro de alquiler variable únicamente si la venta neta supera $40M/mes.</span>
-      </div>
-      <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
-        <strong class="text-white block font-semibold mb-1">3. Congelamiento VMA</strong>
-        <span class="text-slate-400">Cuota fija en $2,04M sin indexación IPC hasta Enero 2027.</span>
-      </div>
-    </div>
-  </section>
+        document.addEventListener('DOMContentLoaded', () => {
+            initOccupancyChart();
+            initWaterfallChart();
+            initScheduleChart();
+        });
 
-  <!-- 3. ESQUEMA DE CANCELACION -->
-  <section class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 space-y-3">
-    <h2 class="text-xs font-bold text-emerald-400 uppercase tracking-wider font-heading">3. Esquema de Cancelación & Refinanciación</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-      <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800 space-y-1">
-        <span class="text-amber-400 font-bold uppercase text-[10px] block">PASO 1: Pagos Puente</span>
-        <div class="text-base font-extrabold text-white font-mono">$2,50M / mes</div>
-        <span class="text-slate-400 text-[11px] block">Agosto, Septiembre y Octubre ($7,50M total en efectivo). Protege caja de compras de stock.</span>
-      </div>
-      <div class="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/30 space-y-1">
-        <span class="text-emerald-400 font-bold uppercase text-[10px] block">PASO 2: Refinanciación eCheqs</span>
-        <div class="text-base font-extrabold text-emerald-400 font-mono">4 x $6,38M</div>
-        <span class="text-slate-300 text-[11px] block">Post 25/10: 30, 60, 90 y 120 días (Nov-Feb). Calzados con cobros de Día de la Madre y Navidad.</span>
-      </div>
-    </div>
-  </section>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-button').forEach(el => {
+                el.classList.remove('tab-active');
+                el.classList.add('border-transparent', 'text-slate-500');
+            });
 
+            document.getElementById(`content-${tabId}`).classList.remove('hidden');
+            const activeTab = document.getElementById(`tab-${tabId}`);
+            activeTab.classList.add('tab-active');
+            activeTab.classList.remove('border-transparent', 'text-slate-500');
+        }
+
+        function initOccupancyChart() {
+            const ctx = document.getElementById('chartOccupancy').getContext('2d');
+            chartOccupancyInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Estándar Mín', 'Estándar Máx', 'Cap Propuesto', 'Actual TOM'],
+                    datasets: [{
+                        label: '% Costo Ocupación s/ Ventas Netas',
+                        data: [12.0, 15.0, 20.0, 25.3],
+                        backgroundColor: ['#cbd5e1', '#94a3b8', '#059669', '#e11d48'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 30,
+                            ticks: { callback: v => v + '%' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function initWaterfallChart() {
+            const ctx = document.getElementById('chartWaterfall').getContext('2d');
+            chartWaterfallInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Deuda Reclamada', 'Deducción Punitorios', 'Masa Neta Exigible'],
+                    datasets: [{
+                        data: [35.056, -2.034, 33.022],
+                        backgroundColor: ['#e11d48', '#d97706', '#059669'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { ticks: { callback: v => '$' + v + 'M' } }
+                    }
+                }
+            });
+        }
+
+        function initScheduleChart() {
+            const ctx = document.getElementById('chartSchedule').getContext('2d');
+            chartScheduleInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Ago 26', 'Sep 26', 'Oct 26', 'Nov 26', 'Dic 26', 'Ene 27', 'Feb 27'],
+                    datasets: [
+                        {
+                            label: 'Pagos Puente ($M)',
+                            data: [2.50, 2.50, 2.50, 0, 0, 0, 0],
+                            backgroundColor: '#475569',
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'eCheqs Diferidos ($M)',
+                            data: [0, 0, 0, 6.38, 6.38, 6.38, 6.38],
+                            backgroundColor: '#059669',
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } },
+                    scales: {
+                        x: { stacked: true },
+                        y: {
+                            stacked: true,
+                            ticks: { callback: v => '$' + v + 'M' }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
 </body>
 </html>
