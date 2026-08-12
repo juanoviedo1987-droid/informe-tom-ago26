@@ -1,24 +1,21 @@
-# Informe Ejecutivo & Propuesta de Pago — Nazaria TOM
+# 📊 Negociación Comercial — Nazaria TOM
 
-Repositorio oficial del reporte financiero e infografía interactiva para la negociación comercial con la administración de Tortugas Open Mall (TOM).
-
-## 🚀 Acceso al Reporte Web
-👉 **[Ver Informe Interactivo en GitHub Pages](https://tu-usuario.github.io/nombre-del-repo/)**
+Repositorio de reportes financieros y dashboards ejecutivos para la negociación comercial con la administración de Tortugas Open Mall (TOM).
 
 ---
 
-## 📊 Resumen Ejecutivo (Corte al 12/08/2026)
-* **Deuda Base Reclamada:** $35.056.751,46 (Comprobantes pendientes Mayo - Agosto).
-* **Costo de Ocupación Real:** 25,3% sobre ventas netas (Benchmark rubro: 12% - 15%).
-* **Condonación Solicitada:** $2.034.578,13 por quita del 100% de intereses punitorios.
-* **Masa Neta Exigible:** $33.022.173,33.
+## 🚀 Accesos Directos a las Webs
+
+* 📈 **[Ver Dashboard Interactivo Oficial (index.html)](https://juanoviedo1987.github.io/informe-tom-ago26/)**  
+  *Reporte completo con gráficos dinámicos de Chart.js para presentar en la mesa de negociación.*
+
+* 💼 **[Ver Resumen Ejecutivo de Trabajo (socio.html)](https://juanoviedo1987.github.io/informe-tom-ago26/socio.html)**  
+  *Vista sintética para análisis interno del equipo directivo.*
 
 ---
 
-## 🛠️ Estructura del Proyecto
-* `index.html`: Dashboard completo desarrollado en Tailwind CSS y HTML5 (diseñado para visualización web e impresión a PDF en formato A4).
-
-## 🔄 Cómo actualizar los datos
-1. Abrir `index.html`.
-2. Modificar los valores dentro de las tablas o tarjetas KPI.
-3. Hacer *Commit* en la rama `main` para que GitHub Pages actualice la web automáticamente.
+## 📌 Resumen de Cifras Clave (Corte al 12/08/2026)
+* **Deuda Bruta Reclamada:** $35.056.751,46
+* **Condonación de Punitorios:** -$2.034.578,13
+* **Base Neta Exigible:** $33.022.173,33
+* **Esquema de Pago:** 3 Pagos Puente de $2,50M/mes + 4 eCheqs de ~$6,38M
