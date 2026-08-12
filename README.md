@@ -4,16 +4,6 @@ Repositorio de reportes financieros y dashboards ejecutivos para la negociación
 
 ---
 
-## 🚀 Accesos Directos a las Webs
-
-* 📈 **[Ver Dashboard Interactivo Oficial (index.html)](https://juanoviedo1987.github.io/informe-tom-ago26/)**  
-  *Reporte completo con gráficos dinámicos de Chart.js para presentar en la mesa de negociación.*
-
-* 💼 **[Ver Resumen Ejecutivo de Trabajo (socio.html)](https://juanoviedo1987.github.io/informe-tom-ago26/socio.html)**  
-  *Vista sintética para análisis interno del equipo directivo.*
-
----
-
 ## 📌 Resumen de Cifras Clave (Corte al 12/08/2026)
 * **Deuda Bruta Reclamada:** $35.056.751,46
 * **Condonación de Punitorios:** -$2.034.578,13
